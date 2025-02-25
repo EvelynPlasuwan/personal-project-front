@@ -6,12 +6,15 @@ import Logo from '../../assets/Logo'
 import { createAlert } from "../../utils/createAlert"
 import FormInput from "../../components/form/FormInput"
 import Buttons from "../../components/form/Buttons"
+import { Link } from "react-router"
 
 
 //Validator
 import { registerSchema } from "../../utils/validators"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { actionRegister } from "../../api/auth"
+import Home from "../Home"
+import { CloseButton } from "../../icon"
 
 
 function Register() {
@@ -23,6 +26,8 @@ function Register() {
   // console.log(errors);
   // console.log(errors.password.message);
 
+
+  
 
   const hdlSubmit = async (value) => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -65,11 +70,8 @@ function Register() {
 
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-bold text-gray-800">Create Account</h2>
-              <button className="text-gray-400 hover:text-gray-600">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+              <Link to="/"><CloseButton/></Link>
+             
             </div>
             <hr />
             {/* login passport */}
@@ -123,9 +125,9 @@ function Register() {
 
 
 
-          <div className="text-center mt-4">
+        <div className="text-center mt-4">
         <p className="text-sm text-gray-600">
-          Already have an account? <a href= "http://localhost:5173/auth/login" className="text-blue-600 hover:underline"><Login /></a>
+          Already have an account? <a href= "http://localhost:5173/auth/login" className="text-blue-600 hover:underline">Login</a>
         </p>
       </div>
 

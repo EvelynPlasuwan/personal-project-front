@@ -17,6 +17,7 @@ import EventApprove from '../pages/admin/EventApprove';
 import Dashboard from '../pages/admin/Dashboard';
 import NotFound from '../pages/NotFound';
 import LayoutAuth from '../layouts/LayoutAuth';
+import ProtectRoute from './ProtectRoute';
 
 
 
@@ -28,42 +29,44 @@ function AppRoutes() {
 
         {/* Public */}
         <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="events" element={<Events />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
+          <Route index element={<Home />} />
+          <Route path="events" element={<Events />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
         </Route>
-       
-       {/* Auth */}
-       <Route path="auth" element={<LayoutAuth />}>
-        <Route path="create-event" element={<Login />}/>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+
+        {/* Auth */}
+        <Route path="auth" element={<LayoutAuth />}>
+          <Route path="create-event" element={<Login />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route>
 
         {/* Private */}
-        
+
         {/* User */}
-        <Route path="user" element={<Layout />}>
-        <Route index element={<HomeUser />} />
-        <Route path='userInfo' element={<UserInfo />} />
-        <Route path='user-events' element={<UserEvents/>} />
-        <Route path='host-control' element={<HostCt />} />
+        {/* <Route path="user" element={<ProtectRoute el={<LayoutAuth/>} allows={["USER", "ADMIN"]}/>}> */}
+        <Route path ="user" element={<LayoutAuth/>}>
+          <Route index element={<HomeUser />} />
+          <Route path='userInfo' element={<UserInfo />} />
+          <Route path='user-events' element={<UserEvents />} />
+          <Route path='host-control' element={<HostCt />} />
         </Route>
 
 
         {/* Admin */}
-        <Route path="admin" element={<LayoutAdmin/>}>
-        <Route index element={<AdminInfo/>} />
-        <Route path='event-approve' element={<EventApprove/>} />
-        <Route path='dashboard' element={<Dashboard/>} />
+        {/* <Route path="admin" element={<ProtectRoute el={<LayoutAdmin />} allows={["ADMIN"]}/>}> */}
+        <Route path ="admin" element={<LayoutAdmin/>}>
+          <Route index element={<AdminInfo />} />
+          <Route path='event-approve' element={<EventApprove />} />
+          <Route path='dashboard' element={<Dashboard />} />
         </Route>
 
 
         {/* Other */}
-        <Route path='*' element={<NotFound/>} />
+        <Route path='*' element={<NotFound />} />
 
-        
+
       </Routes>
     </>
   );
