@@ -19,9 +19,16 @@ export const LogoLocation = (props) => {
 
 export const Banner = () => {
   return (
-    <div className="w-full h-[400px] flex justify-center items-center bg-[#2B293D]">
+    <div className="w-full h-[400px] flex justify-center items-center bg-[#2B293D] relative">
       <img src="/banner.webp" alt="Event Banner" className="w-full h-full object-cover" />
     </div>
+  );
+}
+export const Ticket = () => {
+  return (
+
+      <img src="/tickethead.png" alt="event ticket" className="w-full h-full" />
+
   );
 }
 
@@ -38,3 +45,45 @@ export const CloseButton = () => {
     </button>
   )
 }
+
+export const DropdownArrow = (props) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12.707 14.707a1 1 0 01-1.414 0l-5-5a1 1 0 011.414-1.414L12 12.586l4.293-4.293a1 1 0 111.414 1.414l-5 5z"
+        fill="#000"
+      />
+    </svg>
+  )
+}
+
+export const Conference = () => (
+  <div className="w-24 rounded-full">
+    <img src="conference.jpg" alt="Conference" />
+  </div>
+);
+
+export const Workshop = () => (
+  <div className="w-24 rounded-full">
+    <img src="workshop.webp" alt="Workshop" />
+  </div>
+);
+
+export const Concert = () => (
+  <div className="w-24 rounded-full">
+    <img src="concert.jpg" alt="Concert" />
+  </div>
+);
+
+export const Sport = () => (
+  <div className="w-24 rounded-full">
+    <img src="sport.png" alt="Sport" />
+  </div>
+);

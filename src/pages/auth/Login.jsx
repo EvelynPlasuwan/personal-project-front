@@ -71,9 +71,9 @@ function Login() {
 
       <div className="w-2/5 p-8 ">
 
-        <div className='m-2'>
+        {/* <div className='m-2'>
           <Logo />
-        </div>
+        </div> */}
 
         <div className='  flex flex-col justify-center'>
 

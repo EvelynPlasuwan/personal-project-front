@@ -1,8 +1,12 @@
 import React from 'react'
+import LayoutAuth from '../../layouts/LayoutAuth'
 
 function UserInfo() {
   return (
-    <div>UserInfo</div>
+    <div>
+      Info
+      {/* <LayoutAuth/> */}
+    </div>
   )
 }
 

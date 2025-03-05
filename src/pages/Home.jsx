@@ -1,23 +1,28 @@
 import React from 'react'
 import { Banner } from '../icon'
+import EventList from '../components/EventList'
+import CategoriesBar from '../components/CategoriesBar'
+import SearchBar from '../components/SearchBar'
+import Footer from '../components/Footer'
+import About from './About'
 
 function Home() {
   return (
     <>
-    <div className='flex h-[70vh] w-[100%] bg-white opacity-90'>
-      <Banner />
+    <div className='flex h-[70vh] w-full bg-white opacity-90'>
+      <SearchBar/>
     </div>
-    <div className='flex h-44 justify-between'>
+    
+    <CategoriesBar/>
 
-     <img src="https://www.svgrepo.com/show/420321/avatar-female-portrait.svg" alt="wo" />
-     <img src="https://www.svgrepo.com/show/420321/avatar-female-portrait.svg" alt="wo" />
-     <img src="https://www.svgrepo.com/show/420321/avatar-female-portrait.svg" alt="wo" />
-     <img src="https://www.svgrepo.com/show/420321/avatar-female-portrait.svg" alt="wo" />
-     <img src="https://www.svgrepo.com/show/420321/avatar-female-portrait.svg" alt="wo" />
-     <img src="https://www.svgrepo.com/show/420321/avatar-female-portrait.svg" alt="wo" />
-     <img src="https://www.svgrepo.com/show/420321/avatar-female-portrait.svg" alt="wo" />
+    <div className="container mx-auto py-5">
+      <h1 className="text-2xl font-bold text-center mb-6">Upcoming Events</h1>
+      <EventList />
     </div>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, sequi cupiditate temporibus harum nisi nobis odit quibusdam modi iusto totam voluptate eos. Accusantium, temporibus non deserunt odit culpa dolorem voluptates.
+
+<About/>
+    
+    <Footer/>
     </>
   )
 }

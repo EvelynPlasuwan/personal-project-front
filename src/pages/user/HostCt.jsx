@@ -1,8 +1,11 @@
 import React from 'react'
+import LayoutAuth from '../../layouts/LayoutAuth'
+
 
 function HostCt() {
   return (
-    <div>HostCt</div>
+    <div>Host Control</div>
+  //  <LayoutAuth/>
   )
 }
 
