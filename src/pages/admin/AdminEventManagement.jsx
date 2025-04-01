@@ -102,7 +102,7 @@ const AdminEventManagement = () => {
                 <tr key={event.id}>
                   <td>{event.id || event.eventTitle}</td>
                   <td>{event.title || event.eventTitle}</td>
-                  <td>{event.user?.username || 'ไม่ระบุ'}</td>
+                  <td>{event.user || 'ไม่ระบุ'}</td>
                   <td>{new Date(event.date || event.eventDate).toLocaleDateString('th-TH')}</td>
                   <td className="max-w-[200px] truncate">{event.description}</td>
                   <td>

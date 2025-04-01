@@ -21,7 +21,7 @@ const MainNav = () => {
         
         <nav
        
-            className="sticky top-0  grid grid-cols-3 items-center px-4 py-2 
+            className="sticky top-0  grid grid-cols-3 items-center py-2 
       bg-[#2B293D] w-[100%] h-[75px] z-50"
         >
             <div className="ml-16">

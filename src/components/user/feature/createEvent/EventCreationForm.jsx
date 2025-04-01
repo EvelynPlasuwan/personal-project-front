@@ -75,7 +75,7 @@ const EventCreationForm = () => {
 
         try {
             // Upload image first
-            const uploadResponse = await axios.post('http://localhost:8899/api/image/upload', formData, {
+            const uploadResponse = await axios.post('http://localhost:8899/api/images/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 

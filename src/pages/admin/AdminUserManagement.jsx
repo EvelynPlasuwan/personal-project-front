@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { getUsers, updateUserRole, deleteUser } from '../../api/user';
 import UserTable from '../../components/admin/feature/UserTable';
 import EditUserModal from '../../components/admin/feature/EditUserModal';
@@ -11,24 +11,40 @@ const AdminUserManagement = () => {
   const [editingUser, setEditingUser] = useState(null);
   const [deletingUser, setDeletingUser] = useState(null);
 
-  // ดึงข้อมูล Users
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
+      const authStore = localStorage.getItem('auth-store');
+      if (!authStore) {
+        setError('กรุณาเข้าสู่ระบบก่อน');
+        return;
+      }
+      
+      const parsedStore = JSON.parse(authStore);
+      if (!parsedStore.state.token) {
+        setError('กรุณาเข้าสู่ระบบก่อน');
+        return;
+      }
+      
       const data = await getUsers();
       setUsers(data);
       setError(null);
     } catch (err) {
       console.error('Error fetching users:', err);
-      setError('ไม่สามารถโหลดข้อมูลผู้ใช้ได้');
+      if (err.response && err.response.status === 401) {
+        setError('Session หมดอายุ กรุณาเข้าสู่ระบบใหม่');
+        window.location.href = '/auth/login';
+      } else {
+        setError('ไม่สามารถโหลดข้อมูลผู้ใช้ได้');
+      }
     } finally {
       setLoading(false);
     }
-  };
-
+  }, []);
+  
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
 
   // จัดการการแก้ไข Role
   const handleEditClick = (user) => {

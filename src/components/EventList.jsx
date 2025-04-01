@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSearchParams } from 'react-router'; // เพิ่ม import
+import { motion } from "framer-motion";
 import useFetchEvents from "../store/useFetchEvents";
 import EventCard from "./EventCard";
 
@@ -19,15 +20,26 @@ const EventList = () => {
     ? {} 
     : { category: category };
   
-  // อัปเดต URL parameter
-  setSearchParams(params);
-};
+    // อัปเดต URL parameter
+    setSearchParams(params);
+  };
 
-if (loading) return <div>Loading...</div>;
-if (error) return <div>Error: {error}</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
 
   return (
-    <div className="container mx-auto p-4">
+    <motion.div 
+      className="container mx-auto p-4"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={sectionVariants}
+    >
       <h1 className="text-2xl font-bold mb-6">All Events</h1>
       
       <div className="flex gap-2 mb-6 overflow-x-auto">
@@ -46,12 +58,18 @@ if (error) return <div>Error: {error}</div>;
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={sectionVariants}
+      >
         {events.map(event => (
           <EventCard key={event.id} event={event} />
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

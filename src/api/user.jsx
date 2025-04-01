@@ -10,25 +10,37 @@ const api = axios.create({
 });
 
 // Add token to request
+// api.interceptors.request.use((config) => {
+//   const token = localStorage.getItem('token');
+//   if (token) {
+//     config.headers.Authorization = `Bearer ${token}`;
+//   }
+//   return config;
+// });
+
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  const authStore = localStorage.getItem('auth-store');
+  if (authStore) {
+    const parsedStore = JSON.parse(authStore);
+    if (parsedStore.state.token) {
+      config.headers.Authorization = `Bearer ${parsedStore.state.token}`;
+    }
   }
   return config;
 });
 
+
 export const getUsers = async () => {
-  const response = await api.get('/users');
+  const response = await api.get('/api/users/all')
   return response.data;
 };
 
 export const updateUserRole = async (userId, role) => {
-  const response = await api.patch(`/users/${userId}/role`, { role });
+  const response = await api.patch(`/api/users/${userId}/role`, { role });
   return response.data;
 };
 
 export const deleteUser = async (userId) => {
-  const response = await api.delete(`/users/${userId}`);
+  const response = await api.delete(`/api/users/${userId}`);
   return response.data;
 };

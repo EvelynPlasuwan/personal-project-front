@@ -58,7 +58,7 @@ function AuthNav() {
           <p className='text-[10px] text-white'>Profile</p>
         </div>
         <ul tabIndex={0} className="dropdown-content menu bg-[#FFE047] text-[#2B293D] rounded-box z-[1] w-52 p-2 shadow">
-          <li><Link to='/admin'>Account Info</Link></li>
+          {/* <li><Link to='/admin'>Account Info</Link></li> */}
           <li><Link to='/admin/event-approve'>Event Approval</Link></li>
           <li><Link to='/admin/dashboard'>Dashboard</Link></li>
           <div className="divider my-0"></div>

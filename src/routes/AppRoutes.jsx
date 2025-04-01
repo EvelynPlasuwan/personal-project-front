@@ -21,6 +21,7 @@ import ProtectRoute from './ProtectRoute';
 import CreateEvent from '../pages/CreateEvent';
 import MapPage from '../pages/MapPage';
 import AdminEventManagement from '../pages/admin/AdminEventManagement';
+import EventDetailPage from '../pages/EventDetailPage';
 
 
 
@@ -39,6 +40,7 @@ function AppRoutes() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="map" element={<MapPage />} />
+          <Route path="/events/:id" element={<EventDetailPage />} />
 
         </Route>
 

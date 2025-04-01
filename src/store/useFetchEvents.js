@@ -10,7 +10,12 @@ const useFetchEvents = (category) => {
     const fetchEvents = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:8899/api/events');
+        const response = await axios.get('http://localhost:8899/api/events/all');
+
+        if (!response.data) {
+          throw new Error('ไม่พบข้อมูลจากเซิร์ฟเวอร์');
+        }
+
 
         // กรองอีเวนต์ตาม category
         let filteredEvents = response.data;
@@ -25,7 +30,8 @@ const useFetchEvents = (category) => {
         setEvents(filteredEvents);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
+      console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', err);
+        setError(err.response?.data?.message || 'ไม่สามารถดึงข้อมูลอีเวนต์ได้');
         setLoading(false);
       }
     };
